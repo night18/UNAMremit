@@ -5,4 +5,59 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+    <!-- home -->
+    <string name="start_remit">Sending Money</string>
+    <string name="workflow">How send money works</string>
+    <string name="workflow_1">1. Set the amount you want to send</string>
+    <string name="workflow_2">2. Set receiver\'s information</string>
+    <string name="workflow_3">3. Choose your payment method</string>
+    <string name="workflow_4">4. The receiver receive the money</string>
+
+    <!-- amount -->
+    <string name="ustomex">Sending from U.S.A to Mexico</string>
+    <string name="sendingamount">Sending Amount</string>
+    <string name="receivingamount">Receiving Amount</string>
+    <string name="amount_hint">Exchange rate: </string>
+    <string name="usd">USD</string>
+    <string name="mxn">MXN</string>
+    <string name="continued">Continue</string>
+    <string name="back">Back</string>
+
+    <!-- receiver -->
+    <string name="receiverinfo">Receiver information</string>
+    <string name="receive_method">How will the money be received?</string>
+    <string name="deposittobank">Bank deposit</string>
+    <string name="sendingto">Sending to</string>
+    <string name="firstname">First Name</string>
+    <string name="lastname">Last name</string>
+    <string name="bankname">Bank Name</string>
+    <string name="bankname_hint">Select a bank</string>
+    <string name="clabe">CLABE</string>
+
+    <!-- payment -->
+    <string name="pay_method">How do you want to pay?</string>
+    <string name="bank_account">Bank account (US)</string>
+    <string name="debit_card">Debit card</string>
+    <string name="credit_card">Credit card</string>
+
+    <!-- Bank Account -->
+    <string name="accountinfo">Bank Account Information</string>
+    <string name="tip_accountinfo">Must be issued in the United State</string>
+    <string name="routingno">Routing Number</string>
+    <string name="hint_routingno">Routing Number(9 digits)</string>
+    <string name="accountno">Account Number</string>
+    <string name="hint_accountno">Account Number(4-17 digits)</string>
+    <string name="contactinfo">Contact Information</string>
+    <string name="hint_contactinfo">For vertification purpose, your contact information must be linked to the account</string>
+    <string name="address1">Address Line 1</string>
+    <string name="address2">Address Line 2</string>
+    <string name="optional">Optional</string>
+    <string name="city">City</string>
+    <string name="state">State</string>
+    <string name="zipcode">Zip code</string>
+
+    <!-- Review -->
+    <!--<string name=""></string>-->
+
 </resources>
