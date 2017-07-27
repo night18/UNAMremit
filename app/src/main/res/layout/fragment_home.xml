@@ -47,7 +47,9 @@
                 android:id="@+id/welcome_pic"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:srcCompat="@mipmap/welcome" />
+                app:srcCompat="@mipmap/welcome"
+                android:adjustViewBounds="true"
+                />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -66,40 +68,53 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/workflow"
-                    android:textSize="24sp"
+                    android:textColor="#000000"
+                    android:textSize="30sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/label_workflow1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:layout_weight="1"
                     android:text="@string/workflow_1"
-                    android:textSize="18sp" />
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/lable_workflow2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:layout_weight="1"
                     android:text="@string/workflow_2"
-                    android:textSize="18sp" />
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/label_workflow3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:layout_weight="1"
                     android:text="@string/workflow_3"
-                    android:textSize="18sp" />
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/label_workflow4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:layout_weight="1"
                     android:text="@string/workflow_4"
-                    android:textSize="18sp" />
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 

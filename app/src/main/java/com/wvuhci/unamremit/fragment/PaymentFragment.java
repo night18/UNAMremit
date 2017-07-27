@@ -3,11 +3,13 @@ package com.wvuhci.unamremit.fragment;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RadioGroup;
 
 import com.wvuhci.unamremit.R;
 import com.wvuhci.unamremit.core.ProcessController;
@@ -23,6 +25,7 @@ import com.wvuhci.unamremit.core.ProcessController;
 public class PaymentFragment extends ProcessController {
     private View view;
     private Button continueButton,backButton;
+    private RadioGroup radioGroup;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -77,6 +80,10 @@ public class PaymentFragment extends ProcessController {
         backButton = (Button) view.findViewById(R.id.back_button_payment);
         backButton.setOnClickListener(this);
 
+        radioGroup = (RadioGroup) view.findViewById(R.id.rg_paymethod);
+        radioGroup.setOnCheckedChangeListener(this);
+
+
         return view;
     }
 
@@ -107,5 +114,23 @@ public class PaymentFragment extends ProcessController {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    @Override
+    public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+        switch(i){
+            case R.id.rb_bank:
+                paymethodFragment = new BankAccountFragment();
+                break;
+            case R.id.rb_debit:
+                paymethodFragment = new CreditCardFragment();
+                break;
+            case R.id.rb_credit:
+                paymethodFragment = new CreditCardFragment();
+                break;
+            default:
+                paymethodFragment = null;
+                break;
+        }
     }
 }

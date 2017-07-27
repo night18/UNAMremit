@@ -93,14 +93,13 @@
            />
 
         <RadioButton
-            android:id="@+id/rb_credit"
+            android:id="@+id/rb_debit"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:layout_marginTop="54dp"
-            />
+            android:layout_marginTop="54dp" />
 
         <RadioButton
-            android:id="@+id/radioButton3"
+            android:id="@+id/rb_credit"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_marginTop="54dp" />

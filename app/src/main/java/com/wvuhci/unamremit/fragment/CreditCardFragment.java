@@ -1,17 +1,13 @@
 package com.wvuhci.unamremit.fragment;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
-import android.widget.TextView;
 
 import com.wvuhci.unamremit.R;
 import com.wvuhci.unamremit.core.ProcessController;
@@ -19,16 +15,15 @@ import com.wvuhci.unamremit.core.ProcessController;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link BankAccountFragment.OnFragmentInteractionListener} interface
+ * {@link CreditCardFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link BankAccountFragment#newInstance} factory method to
+ * Use the {@link CreditCardFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class BankAccountFragment extends ProcessController {
+public class CreditCardFragment extends ProcessController {
     private View view;
     private Button continueButton, backButton;
-    private Spinner stateSpinner;
-    private String[] stateArray;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -41,7 +36,7 @@ public class BankAccountFragment extends ProcessController {
 
     private OnFragmentInteractionListener mListener;
 
-    public BankAccountFragment() {
+    public CreditCardFragment() {
         // Required empty public constructor
     }
 
@@ -51,11 +46,11 @@ public class BankAccountFragment extends ProcessController {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment BankAccountFragment.
+     * @return A new instance of fragment CreditCardFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static BankAccountFragment newInstance(String param1, String param2) {
-        BankAccountFragment fragment = new BankAccountFragment();
+    public static CreditCardFragment newInstance(String param1, String param2) {
+        CreditCardFragment fragment = new CreditCardFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -76,40 +71,14 @@ public class BankAccountFragment extends ProcessController {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_bank_account, container, false);
-        continueButton = (Button) view.findViewById(R.id.continue_button_bank);
+        view = inflater.inflate(R.layout.fragment_credit_card, container, false);
+        continueButton = (Button) view.findViewById(R.id.continue_button_card);
         continueButton.setOnClickListener(this);
 
-        backButton = (Button) view.findViewById(R.id.back_button_bank);
+        backButton = (Button) view.findViewById(R.id.back_button_card);
         backButton.setOnClickListener(this);
 
-        stateSpinner = (Spinner) view.findViewById(R.id.spinner_state);
-        stateArray = getResources().getStringArray(R.array.state_name);
-        ArrayAdapter<CharSequence> stateList = new ArrayAdapter<CharSequence>(this.getActivity(),R.layout.spinner_item , stateArray ){
-            @Override
-            public boolean isEnabled(int position){
-                if(position == 0){
-                    return false;
-                }else{
-                    return true;
-                }
-            }
 
-            @Override
-            public View getDropDownView(int position, View convertView, ViewGroup parent){
-                View dropdownView = super.getDropDownView(position,convertView,parent);
-                TextView tv = (TextView) dropdownView;
-
-                if(position == 0){
-                    tv.setTextColor(Color.parseColor("#C0C0C0"));
-                }else{
-                    tv.setTextColor(Color.parseColor("#000000"));
-                }
-                return tv;
-            }
-        };
-        stateList.setDropDownViewResource(R.layout.spinner_item);
-        stateSpinner.setAdapter(stateList);
 
         return view;
     }

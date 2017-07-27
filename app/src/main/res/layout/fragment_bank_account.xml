@@ -120,7 +120,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
             <EditText
-                android:id="@+id/et_routing_no"
+                android:id="@+id/et_routing_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -143,15 +143,16 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et_routing_no" />
+                app:layout_constraintTop_toBottomOf="@+id/et_routing_number" />
 
             <EditText
-                android:id="@+id/et_account_no"
+                android:id="@+id/et_account_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="@string/hint_accountno"
                 android:inputType="number"
+                android:textStyle="italic"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView19" />
@@ -190,7 +191,8 @@
                 android:ems="10"
                 android:hint="@string/address1"
                 android:inputType="textPostalAddress"
-                android:maxLines="1" />
+                android:maxLines="1"
+                android:textStyle="italic" />
 
             <TextView
                 android:id="@+id/textView23"
@@ -208,7 +210,8 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="@string/optional"
-                android:inputType="textPostalAddress" />
+                android:inputType="textPostalAddress"
+                android:textStyle="italic" />
 
             <TextView
                 android:id="@+id/textView24"
@@ -226,7 +229,8 @@
                 android:layout_height="match_parent"
                 android:ems="10"
                 android:hint="@string/city"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:textStyle="italic" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -252,7 +256,8 @@
                     <Spinner
                         android:id="@+id/spinner_state"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:spinnerMode="dialog" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -271,7 +276,7 @@
                         android:textStyle="bold" />
 
                     <EditText
-                        android:id="@+id/et_zipcode"
+                        android:id="@+id/et_bank_zipcode"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
