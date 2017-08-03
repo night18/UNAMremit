@@ -7,9 +7,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.wvuhci.unamremit.R;
 import com.wvuhci.unamremit.core.ProcessController;
+
+import static com.wvuhci.unamremit.MainActivity.paymentInfo;
+import static com.wvuhci.unamremit.MainActivity.receiverInfo;
+import static com.wvuhci.unamremit.MainActivity.transactionInfo;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -20,6 +25,10 @@ import com.wvuhci.unamremit.core.ProcessController;
  * create an instance of this fragment.
  */
 public class ReviewFragment extends ProcessController {
+    private TextView receiverNameTV, receiverBankNameTV, receiverAccountNumberTV, usdamountTV, mxnamountTV,
+            exchangeRateTV, feeTV, totalTV, senderBankMethodTV, senderBankAccountNumberTV;
+
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -66,7 +75,45 @@ public class ReviewFragment extends ProcessController {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_review, container, false);
+        View view = inflater.inflate(R.layout.fragment_review, container, false);
+        receiverNameTV = view.findViewById(R.id.tv_receiver_name);
+        receiverBankNameTV = view.findViewById(R.id.tv_bank_name_receive);
+        receiverAccountNumberTV = view.findViewById(R.id.tv_account_number_receive);
+        usdamountTV = view.findViewById(R.id.tv_amount_send);
+        mxnamountTV = view.findViewById(R.id.tv_amount_receive);
+        exchangeRateTV = view.findViewById(R.id.tv_exchange_rate);
+        feeTV = view.findViewById(R.id.tv_fee);
+        totalTV = view.findViewById(R.id.tv_total);
+        senderBankMethodTV = view.findViewById(R.id.tv_bank_method);
+        senderBankAccountNumberTV = view.findViewById(R.id.tv_account_number_pay);
+
+        receiverNameTV.setText(receiverInfo.getFirstName()+ " " + receiverInfo.getLastName());
+        receiverBankNameTV.setText(receiverInfo.getBankName());
+
+        receiverAccountNumberTV.setText(receiverInfo.getClabe());
+        usdamountTV.setText(transactionInfo.getUsdAmount() + "");
+        mxnamountTV.setText(transactionInfo.getMxnAmount() + "");
+        exchangeRateTV.setText(transactionInfo.getExchangeRate() + "");
+        feeTV.setText(transactionInfo.getFee() + "");
+        double total = transactionInfo.getUsdAmount() + transactionInfo.getFee();
+        totalTV.setText(total + "");
+        String paymethod = "";
+        switch (paymentInfo.getPayMethod()){
+            case 0:
+                paymethod = "bank account:";
+                break;
+            case 1:
+                paymethod = "debit card:";
+                break;
+            case 2:
+                paymethod = "credit card:";
+                break;
+        }
+        senderBankMethodTV.setText(paymethod);
+
+        senderBankAccountNumberTV.setText(paymentInfo.getAccountNumber());
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

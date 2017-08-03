@@ -12,6 +12,7 @@ import android.widget.Button;
 import com.wvuhci.unamremit.R;
 import com.wvuhci.unamremit.core.ProcessController;
 
+
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
@@ -83,6 +84,16 @@ public class HomeFragment extends ProcessController  {
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
+        }
+    }
+
+    @Override
+    public void onClick(View view){
+        switch (view.getId()){
+            case R.id.StartRemit:
+                nextFragment = new AmountFragment();
+                switchFragment(nextFragment);
+                break;
         }
     }
 

@@ -13,6 +13,8 @@ import android.widget.RadioGroup;
 
 import com.wvuhci.unamremit.R;
 import com.wvuhci.unamremit.core.ProcessController;
+import static com.wvuhci.unamremit.MainActivity.paymentInfo;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -94,6 +96,20 @@ public class PaymentFragment extends ProcessController {
         }
     }
 
+    @Override
+    public void onClick(View view){
+        switch (view.getId()){
+            case R.id.continue_button_payment:
+                if(nextFragment !=null) {
+                    switchFragment(nextFragment);
+                }
+                break;
+            case R.id.back_button_payment:
+                getFragmentManager().popBackStack();
+                break;
+        }
+    }
+
 
     @Override
     public void onDetach() {
@@ -120,16 +136,19 @@ public class PaymentFragment extends ProcessController {
     public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
         switch(i){
             case R.id.rb_bank:
-                paymethodFragment = new BankAccountFragment();
+                paymentInfo.setPayMethod(0);
+                nextFragment = new BankAccountFragment();
                 break;
             case R.id.rb_debit:
-                paymethodFragment = new CreditCardFragment();
+                paymentInfo.setPayMethod(1);
+                nextFragment = new CreditCardFragment();
                 break;
             case R.id.rb_credit:
-                paymethodFragment = new CreditCardFragment();
+                paymentInfo.setPayMethod(2);
+                nextFragment = new CreditCardFragment();
                 break;
             default:
-                paymethodFragment = null;
+                nextFragment = null;
                 break;
         }
     }

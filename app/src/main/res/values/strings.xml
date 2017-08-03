@@ -5,6 +5,9 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="transaction">transaction</string>
+    <string name="setting">setting</string>
+    <string name="about">About UnamReimit</string>
 
     <!-- home -->
     <string name="start_remit">Start sending Money</string>
@@ -18,7 +21,8 @@
     <string name="ustomex">Sending from U.S.A to Mexico</string>
     <string name="sendingamount">Sending Amount</string>
     <string name="receivingamount">Receiving Amount</string>
-    <string name="amount_hint">Exchange rate: </string>
+    <string name="rate_hint">Exchange rate: </string>
+    <string name="fee_hint">Transaction fee: </string>
     <string name="usd">USD</string>
     <string name="mxn">MXN</string>
     <string name="continued">Continue</string>
@@ -34,6 +38,11 @@
     <string name="bankname">Bank Name</string>
     <string name="bankname_hint">Select a bank</string>
     <string name="clabe">CLABE</string>
+    <!--TODO add bank name list-->
+    <string-array name="banknamelist">
+        <item>Select a bank</item>
+        <item>PNC bank</item>
+    </string-array>
 
     <!-- payment -->
     <string name="pay_method">How do you want to pay?</string>
@@ -129,7 +138,6 @@
     <!-- Review -->
     <string name="send">Send Money</string>
     <string name="to">to</string>
-    <string name="fee">Transaction fee: </string>
     <string name="total">Total Pay: </string>
     <string name="pay">pay with</string>
 

@@ -11,6 +11,8 @@ import android.widget.Button;
 
 import com.wvuhci.unamremit.R;
 import com.wvuhci.unamremit.core.ProcessController;
+import static com.wvuhci.unamremit.MainActivity.paymentInfo;
+import static com.wvuhci.unamremit.MainActivity.transactionInfo;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -90,6 +92,18 @@ public class CreditCardFragment extends ProcessController {
         }
     }
 
+    @Override
+    public void onClick(View view){
+        switch (view.getId()){
+            case R.id.continue_button_card:
+                nextFragment = new ReviewFragment();
+                switchFragment(nextFragment);
+                break;
+            case R.id.back_button_card:
+                getFragmentManager().popBackStack();
+                break;
+        }
+    }
 
     @Override
     public void onDetach() {

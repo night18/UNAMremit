@@ -8,9 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.wvuhci.unamremit.R;
 import com.wvuhci.unamremit.core.ProcessController;
+import static com.wvuhci.unamremit.MainActivity.transactionInfo;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +26,8 @@ import com.wvuhci.unamremit.core.ProcessController;
 public class AmountFragment extends ProcessController {
     private View view;
     private Button continueButton;
+    private EditText usdAmountET, mxnAmountEt;
+    private TextView rateTV, feeTV;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -71,8 +76,13 @@ public class AmountFragment extends ProcessController {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_amount, container, false);
-        continueButton = (Button) view.findViewById(R.id.continue_button_amount);
+        continueButton = view.findViewById(R.id.continue_button_amount);
         continueButton.setOnClickListener(this);
+
+        usdAmountET = view.findViewById(R.id.amount_send);
+        mxnAmountEt = view.findViewById(R.id.amount_receive);
+        rateTV = view.findViewById(R.id.tv_rate);
+        feeTV = view.findViewById(R.id.tv_fee);
 
         return view;
     }
@@ -81,6 +91,19 @@ public class AmountFragment extends ProcessController {
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
+        }
+    }
+
+    @Override
+    public void onClick(View view){
+        switch (view.getId()){
+            case R.id.continue_button_amount:
+
+                transactionInfo.setUsdAmount(Double.parseDouble(usdAmountET.getText().toString()));
+
+                nextFragment = new ReceiverFragment();
+                switchFragment(nextFragment);
+                break;
         }
     }
 

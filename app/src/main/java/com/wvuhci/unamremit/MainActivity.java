@@ -16,15 +16,27 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.wvuhci.unamremit.core.PaymentInfo;
+import com.wvuhci.unamremit.core.ReceiverInfo;
+import com.wvuhci.unamremit.core.TransactionInfo;
 import com.wvuhci.unamremit.fragment.*;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    public static TransactionInfo transactionInfo;
+    public static ReceiverInfo receiverInfo;
+    public static PaymentInfo paymentInfo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        transactionInfo = new TransactionInfo();
+        receiverInfo = new ReceiverInfo();
+        paymentInfo = new PaymentInfo();
+
 
         /*Set the fragment*/
         if(savedInstanceState == null){
@@ -105,13 +117,11 @@ public class MainActivity extends AppCompatActivity
             getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
             ft.add(R.id.main_container, homeFragment);
             ft.commit();
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_transaction) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_settings) {
 
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_help) {
 
         }
 

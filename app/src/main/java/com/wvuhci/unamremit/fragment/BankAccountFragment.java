@@ -10,11 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.wvuhci.unamremit.R;
 import com.wvuhci.unamremit.core.ProcessController;
+import static com.wvuhci.unamremit.MainActivity.paymentInfo;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,8 +29,9 @@ import com.wvuhci.unamremit.core.ProcessController;
 public class BankAccountFragment extends ProcessController {
     private View view;
     private Button continueButton, backButton;
-    private Spinner stateSpinner;
-    private String[] stateArray;
+    private Spinner stateSpinner, bankSpinner;
+    private String[] stateArray, bankArray;
+    private EditText routingET, accountET,addr1ET, addr2ET, cityET, zipcodeET;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -83,6 +86,13 @@ public class BankAccountFragment extends ProcessController {
         backButton = (Button) view.findViewById(R.id.back_button_bank);
         backButton.setOnClickListener(this);
 
+        routingET = view.findViewById(R.id.et_routing_number);
+        accountET = view.findViewById(R.id.et_account_number);
+        addr1ET = view.findViewById(R.id.et_address1);
+        addr2ET = view.findViewById(R.id.et_address2);
+        cityET = view.findViewById(R.id.et_city);
+        zipcodeET = view.findViewById(R.id.et_bank_zipcode);
+
         stateSpinner = (Spinner) view.findViewById(R.id.spinner_state);
         stateArray = getResources().getStringArray(R.array.state_name);
         ArrayAdapter<CharSequence> stateList = new ArrayAdapter<CharSequence>(this.getActivity(),R.layout.spinner_item , stateArray ){
@@ -111,6 +121,7 @@ public class BankAccountFragment extends ProcessController {
         stateList.setDropDownViewResource(R.layout.spinner_item);
         stateSpinner.setAdapter(stateList);
 
+
         return view;
     }
 
@@ -121,6 +132,28 @@ public class BankAccountFragment extends ProcessController {
         }
     }
 
+    @Override
+    public void onClick(View view){
+        switch (view.getId()){
+            case R.id.continue_button_bank:
+                paymentInfo.setRoutingNumber(routingET.getText().toString());
+                paymentInfo.setAccountNumber(accountET.getText().toString());
+                paymentInfo.setAddr1(addr1ET.getText().toString());
+                paymentInfo.setAddr2(addr2ET.getText().toString());
+                paymentInfo.setCity(cityET.getText().toString());
+                paymentInfo.setZipCode(zipcodeET.getText().toString());
+
+
+
+
+                nextFragment = new ReviewFragment();
+                switchFragment(nextFragment);
+                break;
+            case R.id.back_button_bank:
+                getFragmentManager().popBackStack();
+                break;
+        }
+    }
 
     @Override
     public void onDetach() {

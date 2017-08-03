@@ -1,16 +1,24 @@
 package com.wvuhci.unamremit.fragment;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.wvuhci.unamremit.R;
-import com.wvuhci.unamremit.core.ProcessController;
+import com.wvuhci.unamremit.core.*;
+
+import static com.wvuhci.unamremit.MainActivity.receiverInfo;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +31,10 @@ import com.wvuhci.unamremit.core.ProcessController;
 public class ReceiverFragment extends ProcessController {
     private View view;
     private Button continueButton,backButton;
+    private EditText firstNameET, lastNameET,clabeET;
+    private Spinner bankSpinner;
+    private String[] bankArray;
+    private int bankIndex = -1;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -77,6 +89,50 @@ public class ReceiverFragment extends ProcessController {
         backButton = (Button) view.findViewById(R.id.back_button_receiver);
         backButton.setOnClickListener(this);
 
+        firstNameET = view.findViewById(R.id.et_firstname);
+        lastNameET = view.findViewById(R.id.et_lastname);
+        clabeET = view.findViewById(R.id.et_clabe);
+
+        bankSpinner = view.findViewById(R.id.spinner_bankname);
+        bankArray = getResources().getStringArray(R.array.banknamelist);
+        ArrayAdapter<CharSequence> stateList = new ArrayAdapter<CharSequence>(this.getActivity(),R.layout.spinner_item , bankArray ){
+            @Override
+            public boolean isEnabled(int position){
+                if(position == 0){
+                    return false;
+                }else{
+                    return true;
+                }
+            }
+
+            @Override
+            public View getDropDownView(int position, View convertView, ViewGroup parent){
+                View dropdownView = super.getDropDownView(position,convertView,parent);
+                TextView tv = (TextView) dropdownView;
+
+                if(position == 0){
+                    tv.setTextColor(Color.parseColor("#C0C0C0"));
+                }else{
+                    tv.setTextColor(Color.parseColor("#000000"));
+                }
+                return tv;
+            }
+        };
+        stateList.setDropDownViewResource(R.layout.spinner_item);
+        bankSpinner.setAdapter(stateList);
+        bankSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                bankIndex = i;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
 
         return view;
     }
@@ -85,6 +141,25 @@ public class ReceiverFragment extends ProcessController {
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
+        }
+    }
+
+    @Override
+    public void onClick(View view){
+        switch (view.getId()){
+            case R.id.continue_button_receiver:
+
+                receiverInfo.setFirstName(firstNameET.getText().toString());
+                receiverInfo.setLastName(lastNameET.getText().toString());
+                receiverInfo.setClabe(clabeET.getText().toString());
+                receiverInfo.setBankName(bankArray[bankIndex]);
+
+                nextFragment = new PaymentFragment();
+                switchFragment(nextFragment);
+                break;
+            case R.id.back_button_receiver:
+                getFragmentManager().popBackStack();
+                break;
         }
     }
 
